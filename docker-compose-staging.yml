@@ -1,0 +1,196 @@
+services:
+
+  # ── Infrastructure ──────────────────────────────────────────────────────────
+
+  postgres:
+    image: postgres:16
+    container_name: sw_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: sw_redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  elasticsearch:
+    image: elasticsearch:8.11.0
+    container_name: sw_elasticsearch
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"green\"\\|\"status\":\"yellow\"'"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+  # ── Application ─────────────────────────────────────────────────────────────
+
+  spp:
+    image: ${REGISTRY}/storyweaver-rails:${SPP_IMAGE_TAG}
+    container_name: sw_rails
+    restart: unless-stopped
+    environment:
+      - RAILS_ENV=development
+      - BUNDLE_WITHOUT=test
+      - DB_HOST=postgres
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - REDIS_URL=redis://redis:6379
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - DEVISE_SECRET_KEY_BASE=${DEVISE_SECRET_KEY_BASE}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - ROOT_URL=${ROOT_URL}
+      - FOG_PATH_METHOD=${FOG_PATH_METHOD}
+      - FOG_HOST=${FOG_HOST}
+      - FOG_SW_HOST=${FOG_SW_HOST}
+      - FOG_LOCAL_HOST=${FOG_LOCAL_HOST}
+      - FOG_DIRECTORY=${FOG_DIRECTORY}
+      - FOG_SW_DIRECTORY=${FOG_SW_DIRECTORY}
+      - FOG_LOCAL_DIRECTORY=${FOG_LOCAL_DIRECTORY}
+    volumes:
+      - sw_js_build:/sw-js/build:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      sw-js:
+        condition: service_healthy
+
+  worker:
+    image: ${REGISTRY}/storyweaver-rails:${SPP_IMAGE_TAG}
+    container_name: sw_worker
+    restart: unless-stopped
+    command: ["bundle", "_2.5.18_", "exec", "rake", "jobs:work"]
+    environment:
+      - RAILS_ENV=development
+      - BUNDLE_WITHOUT=test
+      - DB_HOST=postgres
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - REDIS_URL=redis://redis:6379
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - DEVISE_SECRET_KEY_BASE=${DEVISE_SECRET_KEY_BASE}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - ROOT_URL=${ROOT_URL}
+      - FOG_PATH_METHOD=${FOG_PATH_METHOD}
+      - FOG_HOST=${FOG_HOST}
+      - FOG_SW_HOST=${FOG_SW_HOST}
+      - FOG_LOCAL_HOST=${FOG_LOCAL_HOST}
+      - FOG_DIRECTORY=${FOG_DIRECTORY}
+      - FOG_SW_DIRECTORY=${FOG_SW_DIRECTORY}
+      - FOG_LOCAL_DIRECTORY=${FOG_LOCAL_DIRECTORY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+
+  sw-nodejs:
+    image: ${REGISTRY}/storyweaver-nodejs:${NODEJS_IMAGE_TAG}
+    container_name: sw_nodejs
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+      - DB_HOST=postgres
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_PORT=5432
+      - REDIS_HOST=redis://redis:6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - ELASTIC_NODE=http://elasticsearch:9200
+      - RAILS_SECRET=${SECRET_KEY_BASE}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - ROOT_URL=${ROOT_URL}
+      - GCS_BUCKET_NAME=${GCS_BUCKET_NAME}
+      - GCS_SERVICE_ACCOUNT=${GCS_SERVICE_ACCOUNT}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL}
+      - CDN_URL=${CDN_URL}
+      - JOTFORM_API_KEY=${JOTFORM_API_KEY}
+      - SIGHTENGINE_USERNAME=${SIGHTENGINE_USERNAME}
+      - SIGHTENGINE_PASSWORD=${SIGHTENGINE_PASSWORD}
+      - SMS_SERVICE_DISABLED=true
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+
+  sw-js:
+    image: ${REGISTRY}/storyweaver-frontend:${FRONTEND_IMAGE_TAG}
+    container_name: sw_frontend
+    restart: unless-stopped
+    volumes:
+      - sw_js_build:/app/build
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:3000 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: sw_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - spp
+      - sw-nodejs
+      - sw-js
+
+# ── Volumes ───────────────────────────────────────────────────────────────────
+
+volumes:
+  postgres_data:
+  redis_data:
+  es_data:
+  sw_js_build:
