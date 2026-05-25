@@ -1,0 +1,9 @@
+[
+{"id":1,"grade":"ग्रेड 1","grade_number":1,"grade_description":"आसान, परिचित शब्दों के सहारे छोटे वाक्य पढ़ें","locale":"hi","created_at":"2021-11-18T01:22:37.260516000Z","updated_at":"2021-11-18T01:22:37.260516000Z"},
+{"id":2,"grade":"ग्रेड 2","grade_number":2,"grade_description":"अक्षर व ध्वनि के मेल को समझें और लम्बे शब्द और वाक्य पढ़ें","locale":"hi","created_at":"2021-11-18T01:22:37.307036000Z","updated_at":"2021-11-18T01:22:37.307036000Z"},
+{"id":3,"grade":"ग्रेड 3","grade_number":3,"grade_description":"जटिल वाक्यों को उनके अर्थ समझकर और प्रवाह से पढ़ें","locale":"hi","created_at":"2021-11-18T01:22:37.323216000Z","updated_at":"2021-11-18T01:22:37.323216000Z"},
+{"id":4,"grade":"Grade 1","grade_number":1,"grade_description":"Read small sentences with simple, familiar words","locale":"en","created_at":"2021-11-18T01:22:37.368652000Z","updated_at":"2021-11-18T01:22:37.368652000Z"},
+{"id":5,"grade":"इयत्ता १","grade_number":1,"grade_description":"सोप्या, ओळखीच्या शब्दांसोबत छोटी वाक्ये वाचा","locale":"mr","created_at":"2021-11-18T01:30:04.630418000Z","updated_at":"2021-11-18T01:30:04.630418000Z"},
+{"id":6,"grade":"इयत्ता २","grade_number":2,"grade_description":"ध्वनी-अक्षरे यांच्यातील संबंध जाणा, तसेच मोठे शब्द व दीर्घ वाक्ये वाचा","locale":"mr","created_at":"2021-11-18T01:30:04.666853000Z","updated_at":"2021-11-18T01:30:04.666853000Z"},
+{"id":7,"grade":"इयत्ता ३","grade_number":3,"grade_description":"अवघड वाक्ये प्रवाहीपणे आणि अर्थ समजावून घेऊन वाचा","locale":"mr","created_at":"2021-11-18T01:30:04.684232000Z","updated_at":"2021-11-18T01:30:04.684232000Z"}
+]
