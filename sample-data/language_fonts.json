@@ -1,0 +1,9 @@
+[
+{"id":46,"font":"Samim","script":"samim","created_at":"2019-01-10T05:59:44.071386000Z","updated_at":"2019-01-10T05:59:44.071386000Z","origin_url":"https://uat.pbees.party","uuid":"SW-46"},
+{"id":1,"font":"Noto Sans","script":"english","created_at":"2017-02-14T09:52:19.464310000Z","updated_at":"2017-02-14T09:52:19.464310000Z","origin_url":"https://uat.pbees.party","uuid":"SW-1"},
+{"id":6,"font":"Noto Sans Oriya","script":"odia","created_at":"2017-02-14T09:52:19.490932000Z","updated_at":"2017-02-14T09:52:19.490932000Z","origin_url":"https://uat.pbees.party","uuid":"SW-6"},
+{"id":11,"font":"Noto Sans Bengali","script":"bengali","created_at":"2017-02-14T09:52:19.505724000Z","updated_at":"2017-02-14T09:52:19.505724000Z","origin_url":"https://uat.pbees.party","uuid":"SW-11"},
+{"id":15,"font":"Noto Sans Devanagari","script":"devanagri","created_at":"2017-02-14T09:52:19.517074000Z","updated_at":"2017-02-14T09:52:19.517074000Z","origin_url":"https://uat.pbees.party","uuid":"SW-15"},
+{"id":23,"font":"Noto Sans Kannada","script":"kannada","created_at":"2017-02-14T09:52:19.566091000Z","updated_at":"2017-02-14T09:52:19.566091000Z","origin_url":"https://uat.pbees.party","uuid":"SW-23"},
+{"id":26,"font":"Noto Sans Gurmukhi","script":"punjabi","created_at":"2017-02-14T09:52:19.575666000Z","updated_at":"2017-02-14T09:52:19.575666000Z","origin_url":"https://uat.pbees.party","uuid":"SW-26"}
+]
