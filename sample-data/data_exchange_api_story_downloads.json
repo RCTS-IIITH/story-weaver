@@ -1,0 +1,12 @@
+[
+{"id":424,"download_type":"low","organization_id":915,"story_id":8,"ip_address":"202.65.158.178","created_at":"2019-02-14T12:38:28.143137000Z","updated_at":"2019-04-02T06:35:02.830459000Z","token_id":12},
+{"id":836,"download_type":"low","organization_id":915,"story_id":7,"ip_address":"202.65.158.178","created_at":"2019-02-14T14:07:34.630558000Z","updated_at":"2019-04-02T06:35:04.581509000Z","token_id":12},
+{"id":879,"download_type":"low","organization_id":915,"story_id":2,"ip_address":"202.65.158.178","created_at":"2019-02-14T14:17:57.015228000Z","updated_at":"2019-04-02T06:35:04.827951000Z","token_id":12},
+{"id":921,"download_type":"low","organization_id":915,"story_id":1,"ip_address":"202.65.158.178","created_at":"2019-02-14T14:28:00.404001000Z","updated_at":"2019-04-02T06:35:04.990044000Z","token_id":12},
+{"id":1655,"download_type":"low","organization_id":915,"story_id":4,"ip_address":"202.65.158.178","created_at":"2019-02-14T16:53:07.944316000Z","updated_at":"2019-04-02T06:35:08.504498000Z","token_id":12},
+{"id":1744,"download_type":"low","organization_id":915,"story_id":6,"ip_address":"202.65.158.178","created_at":"2019-02-14T17:11:10.560277000Z","updated_at":"2019-04-02T06:35:08.826782000Z","token_id":12},
+{"id":1956,"download_type":"low","organization_id":915,"story_id":9,"ip_address":"202.65.158.178","created_at":"2019-02-14T17:48:04.128641000Z","updated_at":"2019-04-02T06:35:10.089849000Z","token_id":12},
+{"id":2484,"download_type":"low","organization_id":915,"story_id":5,"ip_address":"202.65.158.178","created_at":"2019-02-14T19:14:39.665108000Z","updated_at":"2019-04-02T06:35:11.650573000Z","token_id":12},
+{"id":22162,"download_type":"low","organization_id":3681,"story_id":1,"ip_address":"127.0.0.1","created_at":"2020-12-02T10:08:32.839578000Z","updated_at":"2020-12-02T10:08:32.839578000Z","token_id":62},
+{"id":22163,"download_type":"low","organization_id":3681,"story_id":1,"ip_address":"127.0.0.1","created_at":"2020-12-02T10:08:50.569822000Z","updated_at":"2020-12-02T10:08:50.569822000Z","token_id":62}
+]

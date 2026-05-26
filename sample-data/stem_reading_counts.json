@@ -1,0 +1,16 @@
+[
+{"id":58,"user_id":72834,"story_id":1,"read_count":2,"created_at":"2022-11-28T10:57:41.266670000Z","updated_at":"2022-11-28T10:57:46.274243000Z"},
+{"id":61,"user_id":72767,"story_id":1,"read_count":3,"created_at":"2022-11-28T11:02:01.585050000Z","updated_at":"2022-11-28T11:02:18.039020000Z"},
+{"id":99,"user_id":73005,"story_id":1,"read_count":11,"created_at":"2022-12-06T06:46:05.478300000Z","updated_at":"2022-12-06T13:22:24.084103000Z"},
+{"id":81,"user_id":72608,"story_id":1,"read_count":19,"created_at":"2022-12-01T08:39:18.710178000Z","updated_at":"2022-12-05T11:50:50.933945000Z"},
+{"id":111,"user_id":72825,"story_id":1,"read_count":1,"created_at":"2022-12-30T11:35:51.439658000Z","updated_at":"2022-12-30T11:35:51.444495000Z"},
+{"id":103,"user_id":72805,"story_id":1,"read_count":14,"created_at":"2022-12-11T14:52:48.878306000Z","updated_at":"2022-12-11T15:06:25.348772000Z"},
+{"id":85,"user_id":72489,"story_id":1,"read_count":4,"created_at":"2022-12-05T06:19:42.634724000Z","updated_at":"2022-12-05T09:34:47.763031000Z"},
+{"id":92,"user_id":72657,"story_id":1,"read_count":10,"created_at":"2022-12-05T08:43:37.149803000Z","updated_at":"2022-12-15T12:10:59.475496000Z"},
+{"id":108,"user_id":73038,"story_id":1,"read_count":10,"created_at":"2022-12-26T06:00:46.111906000Z","updated_at":"2023-01-31T13:52:41.465220000Z"},
+{"id":115,"user_id":72964,"story_id":1,"read_count":1,"created_at":"2023-01-03T08:36:31.508877000Z","updated_at":"2023-01-03T08:36:31.512405000Z"},
+{"id":123,"user_id":73101,"story_id":1,"read_count":1,"created_at":"2023-01-20T14:56:06.946562000Z","updated_at":"2023-01-20T14:56:06.950320000Z"},
+{"id":126,"user_id":72874,"story_id":1,"read_count":1,"created_at":"2023-01-23T12:25:15.744575000Z","updated_at":"2023-01-23T12:25:15.748215000Z"},
+{"id":2759,"user_id":73711,"story_id":4,"read_count":1,"created_at":"2023-10-19T12:00:35.258757000Z","updated_at":"2023-10-19T12:00:35.262875000Z"},
+{"id":2985,"user_id":73721,"story_id":4,"read_count":1,"created_at":"2023-10-20T05:08:07.772150000Z","updated_at":"2023-10-20T05:08:07.776183000Z"}
+]
